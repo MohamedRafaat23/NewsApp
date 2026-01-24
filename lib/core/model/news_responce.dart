@@ -1,6 +1,12 @@
 import 'package:news_app/core/model/source_responce.dart';
 
 class NewsResponce {
+  String? status;
+  String? code;
+  String? message;
+  num? totalResults;
+  List<News>? articles;
+
   NewsResponce({
       this.status, 
       this.totalResults,
@@ -20,12 +26,6 @@ class NewsResponce {
       });
     }
   }
-  String? status;
-  String? code;
-  String? message;
-  num? totalResults;
-  List<News>? articles;
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;

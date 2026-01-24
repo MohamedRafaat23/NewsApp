@@ -1,7 +1,5 @@
-
 import 'package:dio/dio.dart';
 import 'package:news_app/core/network/api/api_constant.dart';
-import 'package:news_app/core/network/api/app_exception.dart';
 
 class DioInterseptor extends Interceptor {
   @override
@@ -58,7 +56,6 @@ class DioInterseptor extends Interceptor {
    handler.next(
     DioException(
     requestOptions:err.requestOptions,
-    error: AppException(message: message),
     message: message,
     response: err.response,
     

@@ -11,4 +11,5 @@ class AppConfigprovider extends ChangeNotifier{
   bool isDark(){
     return themeMode ==ThemeMode.dark;
   }
+  
 }
