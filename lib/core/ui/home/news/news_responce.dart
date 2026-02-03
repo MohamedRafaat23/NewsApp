@@ -1,10 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/core/model/news_responce.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/model/source_responce.dart';
-import 'package:news_app/core/network/api/api_maneger.dart';
-import 'package:news_app/core/network/api/app_exception.dart';
-import 'package:news_app/core/ui/home/news/news_item_card.dart';
+import 'package:news_app/core/ui/home/news/cubit/news_cubit_state.dart';
+import 'package:news_app/core/ui/home/news/cubit/news_view_model_cubit.dart';
+import 'package:news_app/core/ui/home/news/widgets/news_item_card.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
 
 class NewsWidget extends StatefulWidget {
@@ -16,79 +15,55 @@ class NewsWidget extends StatefulWidget {
 }
 
 class _NewsWidgetState extends State<NewsWidget> {
+  NewsViewModelCubit newsViewModel = NewsViewModelCubit();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    return FutureBuilder<NewsResponce>(
-      future: ApiManeger.getNewsBySourcrId(widget.source.id ?? ''),
-      builder: (context, snapshot) {
-        //todo :loading
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator(color: AppColors.grey);
-        }
-        //todo : error=>client error
-        else if (snapshot.hasError) {
-          String errorMessage;
-          String snapShotError = snapshot.error.toString();
-          if (snapShotError is DioException &&
-              (snapShotError as DioException).error is AppException) {
-            errorMessage =
-                ((snapShotError as DioException).error as AppException).message;
-          } else {
-            errorMessage = snapshot.error.toString();
-          }
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(errorMessage),
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.grey,
-                  ),
-                  onPressed: () {
-                    ApiManeger.getNewsBySourcrId(widget.source.id ?? '');
-                    setState(() {});
-                  },
-                  child: Text(
-                    "TRy again",
-                    style: Theme.of(context).textTheme.labelMedium,
+    return BlocProvider(
+      create: (context) => newsViewModel..getNewsBySourceId(widget.source.id!),
+      child: BlocBuilder<NewsViewModelCubit, NewsState>(
+        builder: (context, state) {
+          //todo : Error
+          if (state is NewsErrorState) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(state.errorMessage),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.grey,
+                    ),
+                    onPressed: () {
+                      context.read<NewsViewModelCubit>().getNewsBySourceId(
+                        widget.source.id!,
+                      );
+                    },
+                    child: Text(
+                      "TRy again",
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          );
-        } else if (snapshot.hasData) {
-          var newsList = snapshot.data!.articles;
-          if (newsList == null || newsList.isEmpty) {
-            return Center(
-              child: Text(
-                "No News Found",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
+              ],
             );
-          } else {
+          } else if (state is NewsSuccessState) {
             return ListView.separated(
               padding: EdgeInsets.all(height * 0.02),
               separatorBuilder: (context, index) =>
                   SizedBox(height: height * .02),
-              itemCount: newsList.length,
+              itemCount: state.newsList.length,
               itemBuilder: (context, index) {
-                return NewsItem(news: newsList[index]);
+                return NewsItem(news: state.newsList[index]);
               },
             );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(color: AppColors.grey),
+            );
           }
-        }
-        //لو مدخلتش في كل دول رجعلي دا
-        else {
-          return Center(
-            child: Text(
-              "Starting fetching source",
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-          );
-        }
-      },
+        },
+      ),
     );
   }
 }

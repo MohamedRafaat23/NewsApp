@@ -44,17 +44,18 @@ class ApiManeger {
     }
   }
 
-  static Future<NewsResponce> getNewsBySourcrId(String sourceId) async {
-    try {
-      final responce = await dio.get<dynamic>(
-        EndPoint.newsApi,
-        queryParameters: {
-          // 'apiKey': ApiConstants.apiKey,
-           'sources': sourceId},
-      );
-      return NewsResponce.fromJson(responce.data);
-    }  catch (e) {
-      rethrow;
-    }
+  static Future<NewsResponce> getNewsBySourceId(String sourceId) async {
+  try {
+    final response = await dio.get(
+      EndPoint.newsApi,
+      queryParameters: {
+        'apiKey': ApiConstants.apiKey,
+        'sources': sourceId,
+      },
+    );
+    return NewsResponce.fromJson(response.data);
+  } on DioException catch (e) {
+    throw Exception(e.response?.data['message'] ?? 'Network error');
   }
-}
+  }
+  }
