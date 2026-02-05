@@ -1,4 +1,4 @@
-import 'package:news_app/core/model/news_responce.dart';
+import '../../../../model/news_responce/news.dart';
 
 abstract class NewsState{}
 

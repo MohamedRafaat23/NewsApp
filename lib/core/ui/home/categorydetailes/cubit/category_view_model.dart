@@ -10,7 +10,7 @@ class CategoryViewModel extends Cubit<CategoryCubitState> {
       var response  = await ApiManeger.getSources(categoryId: categoryId);
       if (response .status == 'error') {
         emit(
-          CategoryErrorState(errorMessage: response .message ?? 'Unknown error'),
+          CategoryErrorState(errorMessage: response.message ?? 'Unknown error'),
         );
       } else {
         emit(CategorySuccessState(sourcesList: response .sources ?? []));

@@ -1,4 +1,5 @@
-import 'package:news_app/core/model/source_responce.dart';
+
+import 'package:news_app/core/model/source_response/source.dart';
 
 abstract class CategoryCubitState {}
 

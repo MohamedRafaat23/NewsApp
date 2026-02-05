@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/model/source_responce.dart';
+
+import '../../../../model/source_response/source.dart';
 
 class SourceNameList extends StatelessWidget {
   final bool isSelected;

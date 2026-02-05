@@ -38,9 +38,15 @@ dependencies:
   google_fonts: ^6.3.2
   pretty_dio_logger: ^1.4.0
   provider: ^6.1.5+1
+  retrofit: ^4.9.0
+  logger: ^2.6.0  
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
+  retrofit_generator: ^10.0.1
+  build_runner: ^2.6.0
+  json_serializable: ^6.10.0
   flutter_test:
     sdk: flutter
 

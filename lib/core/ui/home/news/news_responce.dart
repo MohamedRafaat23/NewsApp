@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/core/model/source_responce.dart';
 import 'package:news_app/core/ui/home/news/cubit/news_cubit_state.dart';
 import 'package:news_app/core/ui/home/news/cubit/news_view_model_cubit.dart';
 import 'package:news_app/core/ui/home/news/widgets/news_item_card.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
+
+import '../../../model/source_response/source.dart';
 
 class NewsWidget extends StatefulWidget {
   final Source source;

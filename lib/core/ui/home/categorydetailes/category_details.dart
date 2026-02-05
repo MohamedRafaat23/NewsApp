@@ -19,7 +19,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider( 
       create: (_) => viewModel..getSources(widget.category.id),
       child: BlocBuilder<CategoryViewModel, CategoryCubitState>(
         builder: (context, state) {
@@ -47,7 +47,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
             return Center(
               child: CircularProgressIndicator(color: AppColors.grey),
             );
-          }
+          } 
         },
       ),
     );
