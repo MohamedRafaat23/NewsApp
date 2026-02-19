@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/core/model/categories_model.dart';
-import 'package:news_app/core/ui/home/categorydetailes/cubit/category_cubit_state.dart';
-import 'package:news_app/core/ui/home/categorydetailes/cubit/category_view_model.dart';
-import 'package:news_app/core/ui/home/categorydetailes/widgets/tapbar_widget.dart';
+import 'package:news_app/core/presentaion/home/categorydetailes/cubit/category_cubit_state.dart';
+import 'package:news_app/core/presentaion/home/categorydetailes/cubit/category_view_model.dart';
+import 'package:news_app/core/presentaion/home/categorydetailes/widgets/tapbar_widget.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
 
 class CategoryDetails extends StatefulWidget {

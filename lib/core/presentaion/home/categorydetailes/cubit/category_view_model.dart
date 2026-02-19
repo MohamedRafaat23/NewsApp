@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:news_app/core/network/api/api_maneger.dart';
-import 'package:news_app/core/ui/home/categorydetailes/cubit/category_cubit_state.dart';
+import 'package:news_app/core/presentaion/home/categorydetailes/cubit/category_cubit_state.dart';
 
 class CategoryViewModel extends Cubit<CategoryCubitState> {
   CategoryViewModel() : super(CategoryInitialState());

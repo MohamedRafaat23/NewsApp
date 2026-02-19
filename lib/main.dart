@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/core/network/bloc_observer/my_bloc_observer.dart';
 import 'package:news_app/core/provider/app_configprovider.dart';
-import 'package:news_app/core/ui/home/home_screen.dart';
-import 'package:news_app/core/ui/splash/splash_screen.dart';
+import 'package:news_app/core/presentaion/home/home_screen.dart';
+import 'package:news_app/core/presentaion/splash/splash_screen.dart';
 import 'package:news_app/core/utilse/app_theme.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/ui/home/widget/theme_switch.dart';
+import 'package:news_app/core/presentaion/home/widget/theme_switch.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
 
 class DrawerWidget extends StatelessWidget {

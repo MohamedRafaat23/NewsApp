@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/model/categories_model.dart';
 import 'package:news_app/core/provider/app_configprovider.dart';
-import 'package:news_app/core/ui/home/categorydetailes/category_details.dart';
-import 'package:news_app/core/ui/home/pages/categories_page.dart';
-import 'package:news_app/core/ui/home/widget/drawer_widget.dart';
+import 'package:news_app/core/presentaion/home/categorydetailes/category_details.dart';
+import 'package:news_app/core/presentaion/home/pages/categories_page.dart';
+import 'package:news_app/core/presentaion/home/widget/drawer_widget.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -34,17 +34,18 @@ class _HomeScreenState extends State<HomeScreen> {
     var appConfigprovider = Provider.of<AppConfigprovider>(context);
     return Scaffold(
       drawer: DrawerWidget(onDrawerIitemClick: onDrawerIitemClick),
+                             //AppBar
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          selectedCategory==null? 
-          "Home":selectedCategory!.categoryName,
+          selectedCategory == null ? "Home" : selectedCategory!.categoryName,
           style: Theme.of(context).textTheme.labelLarge!.copyWith(
             color: appConfigprovider.isDark()
                 ? AppColors.white
                 : AppColors.black,
           ),
         ),
+
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -58,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      
       body: selectedCategory == null
           ? CategoriesPage(
               //pass function as a parameter

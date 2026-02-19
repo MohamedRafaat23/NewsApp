@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:news_app/core/network/api/api_maneger.dart';
-import 'package:news_app/core/ui/home/news/cubit/news_cubit_state.dart';
+import 'package:news_app/core/presentaion/home/news/cubit/news_cubit_state.dart';
 
 class NewsViewModelCubit extends Cubit<NewsState> {
   NewsViewModelCubit() : super(NewsInitialState());

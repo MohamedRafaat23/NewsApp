@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/provider/app_configprovider.dart';
-import 'package:news_app/core/ui/home/categorydetailes/widgets/source_name_list.dart';
-import 'package:news_app/core/ui/home/news/news_responce.dart';
+import 'package:news_app/core/presentaion/home/categorydetailes/widgets/source_name_list.dart';
+import 'package:news_app/core/presentaion/home/news/news_responce.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
 import 'package:provider/provider.dart';
 

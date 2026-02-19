@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/model/categories_model.dart';
 import 'package:news_app/core/provider/app_configprovider.dart';
-import 'package:news_app/core/ui/home/pages/widget/category_card.dart';
+import 'package:news_app/core/presentaion/home/pages/widget/category_card.dart';
 import 'package:news_app/core/utilse/app_colors.dart';
 import 'package:provider/provider.dart';
 //call back function

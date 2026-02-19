@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/provider/app_configprovider.dart';
-import 'package:news_app/core/ui/home/home_screen.dart';
+import 'package:news_app/core/presentaion/home/home_screen.dart';
 import 'package:news_app/core/utilse/assees.dart';
 import 'package:provider/provider.dart';
 
